@@ -456,7 +456,7 @@ namespace cryptonote
 
     BEGIN_SERIALIZE()
       VARINT_FIELD(major_version)
-      if(major_version > BLOCK_MAJOR_VERSION_2) return false;
+      if(major_version > BLOCK_MAJOR_VERSION_3) return false;
       VARINT_FIELD(minor_version)
       if (BLOCK_MAJOR_VERSION_1 == major_version)
       {
@@ -479,7 +479,7 @@ namespace cryptonote
 
     BEGIN_SERIALIZE_OBJECT()
       FIELDS(*static_cast<block_header *>(this))
-      if (BLOCK_MAJOR_VERSION_2 <= major_version)
+      if (BLOCK_MAJOR_VERSION_3 <= major_version)
       {
         auto sbb = make_serializable_bytecoin_block(*this, false, false);
         FIELD_N("parent_block", sbb);
